@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DeliveryRequest.Models.Order>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Таблица заказов</h1>
+</div>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<div class="text-center">
+    <table style="align-content: center">
+        <tr>
+            <th><label id="LabelOrderID" style="width:200px">Order ID</label></th>
+            <th><label id="LabelOCity" style="width:200px">Outcoming City</label></th>
+            <th><label id="LabelOAddress" style="width:200px">Outcoming Address</label></th>
+            <th><label id="LabelICity" style="width:200px">Incoming City</label></th>
+            <th><label id="LabelIAddress" style="width:200px">Incoming Address</label></th>
+            <th><label id="LabelWeight" style="width:200px">Weight</label></th>
+            <th><label id="LabelDate" style="width:200px">Pickup Date</label></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.OutcomingCity</td>
+                <td>@item.OutcomingAddress</td>
+                <td>@item.IncomingCity</td>
+                <td>@item.IncomingAddress</td>
+                <td>@item.Weight</td>
+                <td>@item.PickupDate</td>
+            </tr>
+        }
+    </table>
+</div>
