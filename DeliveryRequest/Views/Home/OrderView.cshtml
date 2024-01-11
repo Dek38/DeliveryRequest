@@ -1,11 +1,31 @@
 ﻿@model DeliveryRequest.Models.Order
-<ul>
-    @Model.Id;</br>
-    @Model.OutcomingCity;</br>
-    @Model.OutcomingAddress;</br>
-    @Model.IncomingAddress;</br>
-    @Model.Weight;</br>
-    @Model.PickupDate;</br>
-</ul>
 @{
+    ViewData["Title"] = "Заказ " + Model.Id.ToString();
 }
+
+<div class="text-center">
+    <h3 class="display-4">Заказ @Model.Id</h3>
+</div>
+
+<ul>
+    <p>
+        <b>Адрес отгрузки:</b>
+    </p>
+    <p>
+        Город @Model.OutcomingCity, @Model.OutcomingAddress
+    </p>
+    <p>
+        <b>Адрес доставки:</b>
+    </p>
+    <p>
+        Город @Model.IncomingCity, @Model.IncomingAddress
+    </p>
+    <p>
+        <b>Вес посылки:</b> @Model.Weight
+    </p>
+    <p>
+        <b>Дата забора груза:</b> @Model.PickupDate?.ToString("dd-MM-yyyy")
+    </p>
+    
+</ul>
+

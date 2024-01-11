@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DeliveryRequest.Models.Order>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Домашняя страница";
 }
 
 <div class="text-center">
@@ -18,13 +18,13 @@
     <form asp-controller="Home">
         <table style="align-content: center">
             <tr>
-                <th><label id="LabelOrderID" style="width:200px">Order ID</label></th>
-                <th><label id="LabelOCity" style="width:200px">Outcoming City</label></th>
-                <th><label id="LabelOAddress" style="width:200px">Outcoming Address</label></th>
-                <th><label id="LabelICity" style="width:200px">Incoming City</label></th>
-                <th><label id="LabelIAddress" style="width:200px">Incoming Address</label></th>
-                <th><label id="LabelWeight" style="width:200px">Weight</label></th>
-                <th><label id="LabelDate" style="width:200px">Pickup Date</label></th>
+                <th><label id="LabelOrderID" style="width:200px">Номер заказа</label></th>
+                <th><label id="LabelOCity" style="width:200px">Город отправителя</label></th>
+                <th><label id="LabelOAddress" style="width:200px">Адрес отправителя</label></th>
+                <th><label id="LabelICity" style="width:200px">Город получателя</label></th>
+                <th><label id="LabelIAddress" style="width:200px">Адрес получателя</label></th>
+                <th><label id="LabelWeight" style="width:200px">Вес груза</label></th>
+                <th><label id="LabelDate" style="width:200px">Дата забора груза</label></th>
             </tr>
             @foreach (var item in Model)
             {            

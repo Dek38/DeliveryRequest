@@ -2,48 +2,55 @@
 @model DeliveryRequest.Models.Order
 
 @{
-    ViewData["Title"] = "Creating an order";
+    ViewData["Title"] = "Создание заказа";
 }
 
-<h1>Creating an order</h1>
+<h1>Создание заказа</h1>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" asp-controller="Home">
             <div class="form-group">
+                <h4> Все поля являются обязательными </h4><br>
                 <p>
-                    <label asp-for="OutcomingCity" id="LabelOCity" style="color: black">Outcoming City</label><br/>
-                    <input asp-for="OutcomingCity" type="text" id="OutcomingCity" name="OutcomingCity" style=" margin-right: 10px">
+                    <label asp-for="OutcomingCity" id="LabelOCity" style="color: black">Город отправителя</label><br>
+                    <input asp-for="OutcomingCity" type="text" id="OutcomingCity" name="OutcomingCity" style=" margin-right: 10px" data-val="true" data-val-required="Обязательное поле"><br>
+                    <span asp-validation-for="OutcomingCity"/>
+                    
                 </p>
                 <p>
-                    <label asp-for="OutcomingAddress" id="LabelOAddress" style="color: black">Outcoming Address</label><br />
-                    <input asp-for="OutcomingAddress" type="text" id="OutcomingAddress" name="OutcomingAddress" style=" margin-right: 10px">
+                    <label asp-for="OutcomingAddress" id="LabelOAddress" style="color: black">Адрес отправителя</label><br>
+                    <input asp-for="OutcomingAddress" type="text" id="OutcomingAddress" name="OutcomingAddress" style=" margin-right: 10px" data-val="true" data-val-required="Обязательное поле"><br>
+                    <span asp-validation-for="OutcomingAddress"/>
                 </p>
                 <p>
-                    <label asp-for="IncomingCity" id="LabelICity" style="color: black">Incoming City</label><br />
-                    <input asp-for="IncomingCity" type="text" id="IncomingCity" name="IncomingCity" style=" margin-right: 10px">
+                    <label asp-for="IncomingCity" id="LabelICity" style="color: black">Город получателя</label><br>
+                    <input asp-for="IncomingCity" type="text" id="IncomingCity" name="IncomingCity" style=" margin-right: 10px" data-val="true" data-val-required="Обязательное поле"><br>
+                    <span asp-validation-for="IncomingCity"/>
                 </p>
                 <p>
-                    <label asp-for="IncomingAddress" id="LabelIAddress" style="color: black">Incoming Address</label><br />
-                    <input asp-for="IncomingAddress" type="text" id="IncomingAddress" name="IncomingAddress" style=" margin-right: 10px">
+                    <label asp-for="IncomingAddress" id="LabelIAddress" style="color: black">Адрес получателя</label><br>
+                    <input asp-for="IncomingAddress" type="text" id="IncomingAddress" name="IncomingAddress" style=" margin-right: 10px" data-val="true" data-val-required="Обязательное поле"><br>
+                    <span asp-validation-for="IncomingAddress"/>
                 </p>
                 <p>
-                    <label asp-for="Weight" id="LabelWeight" style="color: black">Weight</label><br />
-                    <input asp-for="Weight" type="text" id="Weight" name="Weight" style=" margin-right: 10px">
+                    <label asp-for="Weight" id="LabelWeight" style="color: black">Вес груза</label><br>
+                    <input asp-for="Weight" type="number" id="Weight" name="Weight" style=" margin-right: 10px" 
+                    data-val="true" data-val-required="Обязательное поле" data-val-number="Введите число" data-val-range= "Вес должен быть > 0.001 и < 100000"><br>
+                    <span asp-validation-for="Weight"/>
                 </p>
                 <p>
-                    <label asp-for="PickupDate" id="LabelDate" style="color: black">Pickup Date</label><br />
-                    <input asp-for="PickupDate" type="date" id="PickupDate" name="PickupDate" style=" margin-right: 10px">
+                    <label asp-for="PickupDate" id="LabelDate" style="color: black">Дата забора груза</label><br>
+                    <input asp-for="PickupDate" type="date" id="PickupDate" name="PickupDate" style=" margin-right: 10px" data-val="true" data-val-required="Обязательное поле"><br>
+                    <span asp-validation-for="PickupDate"/>
                 </p>
-                <input type="submit" value="Create Order" class="btn btn-primary" />
+                <input type="submit" value="Создать заказ" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<script>
-    function myFunction(val) {
-        console.log("The input value has changed. The new value is: " + val);
-    }
-</script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
