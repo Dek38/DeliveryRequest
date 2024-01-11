@@ -1,51 +1,11 @@
-﻿
-@model DeliveryRequest.Models.Order
-
+﻿@model DeliveryRequest.Models.Order
+<ul>
+    @Model.Id;</br>
+    @Model.OutcomingCity;</br>
+    @Model.OutcomingAddress;</br>
+    @Model.IncomingAddress;</br>
+    @Model.Weight;</br>
+    @Model.PickupDate;</br>
+</ul>
 @{
-    ViewData["Title"] = "Creating an order";
 }
-
-<h1>Creating an order</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" asp-controller="Home">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-            <div class="form-group">
-                <p>
-                    <label asp-for="OutcomingCity" id="LabelOCity" style="color: black">Outcoming City</label><br/>
-                    <input asp-for="OutcomingCity" type="text" id="OutcomingCity" name="OutcomingCity" style=" margin-right: 10px">
-                </p>
-                <p>
-                    <label asp-for="OutcomingAddress" id="LabelOAddress" style="color: black">Outcoming Address</label><br />
-                    <input asp-for="OutcomingAddress" type="text" id="OutcomingAddress" name="OutcomingAddress" style=" margin-right: 10px">
-                </p>
-                <p>
-                    <label asp-for="IncomingCity" id="LabelICity" style="color: black">Incoming City</label><br />
-                    <input asp-for="IncomingCity" type="text" id="IncomingCity" name="IncomingCity" style=" margin-right: 10px">
-                </p>
-                <p>
-                    <label asp-for="IncomingAddress" id="LabelIAddress" style="color: black">Incoming Address</label><br />
-                    <input asp-for="IncomingAddress" type="text" id="IncomingAddress" name="IncomingAddress" style=" margin-right: 10px">
-                </p>
-                <p>
-                    <label asp-for="Weight" id="LabelWeight" style="color: black">Weight</label><br />
-                    <input asp-for="Weight" type="text" id="Weight" name="Weight" style=" margin-right: 10px">
-                </p>
-                <p>
-                    <label asp-for="PickupDate" id="LabelDate" style="color: black">Pickup Date</label><br />
-                    <input asp-for="PickupDate" type="datetime-local" id="PickupDate" name="PickupDate" style=" margin-right: 10px">
-                </p>
-                <input type="submit" value="Create Order" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<script>
-    function myFunction(val) {
-        console.log("The input value has changed. The new value is: " + val);
-    }
-</script>

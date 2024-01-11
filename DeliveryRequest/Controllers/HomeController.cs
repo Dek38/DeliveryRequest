@@ -1,7 +1,6 @@
 using DeliveryRequest.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Diagnostics;
 
 namespace DeliveryRequest.Controllers
@@ -21,12 +20,7 @@ namespace DeliveryRequest.Controllers
             return View(await db.Orders.ToListAsync());
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult OrderView()
+        public IActionResult AddOrderView()
         {
             return View();
         }
@@ -41,9 +35,19 @@ namespace DeliveryRequest.Controllers
                 return RedirectToAction("Index");
             }
             else
-                return RedirectToAction("OrderView");
-
+                return RedirectToAction("AddOrderView");
         }
+
+        public async Task<IActionResult> OrderView(int id)
+        {
+            if (id > 0)
+            {
+                var order = db.Orders.FirstOrDefault(a => a.Id == id);
+                return View(order);
+            }
+            return RedirectToAction("Index");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

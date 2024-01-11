@@ -23,7 +23,7 @@ namespace DeliveryRequest.Models
         [Range(0.001, 100000)]
         public decimal Weight { get; set; }
         [Required]
-        [BindProperty, DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
-        public DateOnly? PickupDate { get; set; }
+        [BindProperty, DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? PickupDate { get; set; }
     }
 }
