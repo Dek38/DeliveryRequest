@@ -17,7 +17,14 @@ namespace DeliveryRequest.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await db.Orders.ToListAsync());
+            try
+            {
+                return View(await db.Orders.ToListAsync());
+            }
+            catch
+            { 
+                return RedirectToAction("Error");
+            }
         }
 
         public IActionResult AddOrderView()
@@ -30,20 +37,36 @@ namespace DeliveryRequest.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Orders.Add(order);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Orders.Add(order);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return RedirectToAction("Error");
+                }
             }
             else
+            {
                 return RedirectToAction("AddOrderView");
+            }
         }
 
-        public async Task<IActionResult> OrderView(int id)
+        public IActionResult OrderView(int id)
         {
             if (id > 0)
             {
-                var order = db.Orders.FirstOrDefault(a => a.Id == id);
-                return View(order);
+                try
+                {
+                    var order = db.Orders.FirstOrDefault(a => a.Id == id);
+                    return View(order);
+                }
+                catch 
+                {
+                    return RedirectToAction("Error");
+                }
             }
             return RedirectToAction("Index");
         }
