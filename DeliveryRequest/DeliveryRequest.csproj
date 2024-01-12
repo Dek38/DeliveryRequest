@@ -16,4 +16,19 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
   </ItemGroup>
 
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+		</None>
+		<None Update="appsettings.Development.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</None>
+		<None Update="_run.bat">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+		</None>
+	</ItemGroup>
+
 </Project>
