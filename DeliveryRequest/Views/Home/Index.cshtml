@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DeliveryRequest.Models.Order>
+﻿@model IEnumerable<DeliveryRequest.Models.OrderToView>
 
 @{
     ViewData["Title"] = "Домашняя страница";
@@ -26,18 +26,26 @@
                 <th><label id="LabelWeight" style="width:200px">Вес груза</label></th>
                 <th><label id="LabelDate" style="width:200px">Дата забора груза</label></th>
             </tr>
-            @foreach (var item in Model)
-            {            
-                <tr id="row_@item.Id" onmouseover="highlightTheRow(this, 0);" onmouseout="highlightTheRow(this, 1);" onclick="location.href = '@Url.Action("OrderView", new { id = item.Id })'">
-                    <td>@item.Id</td>
-                    <td>@item.OutcomingCity</td>
-                    <td>@item.OutcomingAddress</td>
-                    <td>@item.IncomingCity</td>
-                    <td>@item.IncomingAddress</td>
-                    <td>@item.Weight</td>
-                    <td>@item.PickupDate?.ToString("dd-MM-yyyy")</td>
-                </tr>
+
+            @{
+                if (Model != null)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr id="row_@item.Id" onmouseover="highlightTheRow(this, 0);" onmouseout="highlightTheRow(this, 1);" onclick="location.href = '@Url.Action("OrderView", new { id = item.Id, isNew = false })'">
+                            <td>@item.Id</td>
+                            <td>@item.OutcomingCity</td>
+                            <td>@item.OutcomingAddress</td>
+                            <td>@item.IncomingCity</td>
+                            <td>@item.IncomingAddress</td>
+                            <td>@item.Weight</td>
+                            <td>@item.PickupDate?.ToString("dd-MM-yyyy")</td>
+                        </tr>
+                    }
+                }
             }
+
+            
         </table>
     </form>
 </div>

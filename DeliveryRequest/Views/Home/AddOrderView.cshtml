@@ -1,5 +1,5 @@
 ﻿
-@model DeliveryRequest.Models.Order
+@model DeliveryRequest.Models.OrderToView
 
 @{
     ViewData["Title"] = "Создание заказа";
@@ -45,7 +45,7 @@
                     <input asp-for="PickupDate" type="date" id="PickupDate" name="PickupDate" style=" margin-right: 10px" data-val="true" data-val-required="Обязательное поле"><br>
                     <span asp-validation-for="PickupDate"/>
                 </p>
-                <input type="submit" value="Создать заказ" class="btn btn-primary" />
+                <input type="submit" value="Создать заказ" class="btn btn-primary"/>
             </div>
         </form>
     </div>

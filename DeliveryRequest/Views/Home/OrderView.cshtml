@@ -1,31 +1,36 @@
-﻿@model DeliveryRequest.Models.Order
+﻿@model DeliveryRequest.Models.OrderToView
 @{
     ViewData["Title"] = "Заказ " + Model.Id.ToString();
+    if (Model.isNew)
+    {
+        <div class="text-center">
+            <h6 class="display-4" style=" color: green">Заказ @Model.Id успешно создан</h6>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <h3 class="display-4">Заказ @Model.Id</h3>
+        </div>
+    }
 }
-
-<div class="text-center">
-    <h3 class="display-4">Заказ @Model.Id</h3>
-</div>
-
-<ul>
-    <p>
-        <b>Адрес отгрузки:</b>
-    </p>
-    <p>
-        Город @Model.OutcomingCity, @Model.OutcomingAddress
-    </p>
-    <p>
-        <b>Адрес доставки:</b>
-    </p>
-    <p>
-        Город @Model.IncomingCity, @Model.IncomingAddress
-    </p>
-    <p>
-        <b>Вес посылки:</b> @Model.Weight
-    </p>
-    <p>
-        <b>Дата забора груза:</b> @Model.PickupDate?.ToString("dd-MM-yyyy")
-    </p>
+<p>
+    <b>Адрес отгрузки:</b>
+</p>
+<p>
+    Город @Model.OutcomingCity, @Model.OutcomingAddress
+</p>
+<p>
+    <b>Адрес доставки:</b>
+</p>
+<p>
+    Город @Model.IncomingCity, @Model.IncomingAddress
+</p>
+<p>
+    <b>Вес посылки:</b> @Model.Weight
+</p>
+<p>
+    <b>Дата забора груза:</b> @Model.PickupDate?.ToString("dd-MM-yyyy")
+</p>
     
-</ul>
 

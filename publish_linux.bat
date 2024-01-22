@@ -1,0 +1,1 @@
+dotnet publish -p:PublishProfile=FolderProfile_linux -o publish\

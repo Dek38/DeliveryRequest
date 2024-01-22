@@ -3,9 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DeliveryRequest.Models
 {
-    public class Order
+    public class OrderToView
     {
-        [Required]
         public int Id { get; set; }
         [Required]
         [MinLength(1)]
@@ -23,7 +22,8 @@ namespace DeliveryRequest.Models
         [Range(0.001, 100000)]
         public decimal Weight { get; set; }
         [Required]
-        [BindProperty, DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [BindProperty, DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? PickupDate { get; set; }
+        public bool isNew { get; set; } = false;
     }
 }
