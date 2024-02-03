@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DeliveryRequest.Models
 {
-    public class Order
+    public class OrderToDB
     {
         [Required]
         public int Id { get; set; }

@@ -1,6 +1,6 @@
+using DeliveryRequest.DBService;
 using DeliveryRequest.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System.Globalization;
 using System.Net;
 
@@ -14,6 +14,7 @@ try
 
     string connection = builder.Configuration.GetConnectionString("DefaultConnection");
     builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlite(connection));
+    builder.Services.AddSingleton<IDBInterface, DbService>();
 
     var serverIP = (string?)builder.Configuration.GetSection("WebProtocolSettings").GetValue(typeof(string), "Url");
     var serverPort = (int)(builder.Configuration.GetSection("WebProtocolSettings").GetValue(typeof(int), "Port") ?? 5000);
