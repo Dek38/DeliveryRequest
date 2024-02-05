@@ -32,5 +32,6 @@
 <p>
     <b>Дата забора груза:</b> @Model.PickupDate?.ToString("dd-MM-yyyy")
 </p>
+<input type="submit" value="Удалить" class="btn btn-primary" style="align-self: center" onclick="location.href = '@Url.Action("Delete", "Home", new { id = Model.Id })'" />
     
 

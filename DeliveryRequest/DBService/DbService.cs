@@ -17,6 +17,41 @@ namespace DeliveryRequest.DBService
             return scope.ServiceProvider.GetRequiredService<ApplicationContext>();
         }
 
+        public Order DeleteOrder(int id)
+        {
+            try
+            {
+                using var db = GetDbContext();
+                var foundOrder = db.Orders.FirstOrDefault(a => a.Id == id);
+                if (foundOrder != null)
+                {
+                    db.Orders.Remove(foundOrder);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
+                return new Order()
+                {
+                    Id = foundOrder.Id,
+                    OutcomingCity = foundOrder.OutcomingCity,
+                    OutcomingAddress = foundOrder.OutcomingAddress,
+                    IncomingCity = foundOrder.IncomingCity,
+                    IncomingAddress = foundOrder.IncomingAddress,
+                    Weight = foundOrder.Weight,
+                    PickupDate = foundOrder.PickupDate
+                };
+
+            }
+            catch
+            {
+                throw new Exception("Ошибка удаления из БД");
+            }
+        }
+
+
         public int AddOrder(Order order)
         {
             try

@@ -7,6 +7,7 @@ namespace DeliveryRequest.DBService
         public Order? GetOrder(int id);
         public ImmutableList<Order> GetOrders();
         public int AddOrder(Order order);
+        public Order DeleteOrder(int id);
     }
 
     public record Order

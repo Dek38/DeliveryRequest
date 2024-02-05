@@ -116,6 +116,19 @@ namespace DeliveryRequest.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Delete(int id) 
+        {
+            try
+            {
+                _db.DeleteOrder(id);
+                return View("DeletedView", id);
+            }
+            catch
+            { 
+                return RedirectToAction("Error"); 
+            }
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
