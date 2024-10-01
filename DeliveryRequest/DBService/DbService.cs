@@ -5,7 +5,7 @@ namespace DeliveryRequest.DBService
 {
     public class DbService: IDBInterface
     {
-        public readonly IServiceProvider _services;
+        private readonly IServiceProvider _services;
         public DbService(IServiceProvider services)
         {
             _services = services;
